@@ -1,4 +1,4 @@
-package Team7.chcestrzelac;
+package com.team7.chcestrzelac;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
