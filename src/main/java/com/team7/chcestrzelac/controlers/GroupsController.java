@@ -14,6 +14,6 @@ public class GroupsController {
     @GetMapping("/groups")
     public String getProductForm(Model model) {
         model.addAttribute("grupa", new Grups());
-        return "lista_grup";
+        return "grupy";
     }
 }

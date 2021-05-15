@@ -14,6 +14,6 @@ public class StrzelniceController {
     @GetMapping("/strzelnice")
     public String getProductForm(Model model) {
         model.addAttribute("strzelnice", new Strzelnica());
-        return "lista_strzelnic";
+        return "strzelnice";
     }
 }
