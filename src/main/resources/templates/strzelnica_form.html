@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NOWA STRZELNICA</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>Fragments</title>
+        <th:block th:fragment="style">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">        </th:block>
+    </head>
+</head>
+<body>
+<div th:replace="mainMenu :: menu"/>
+<div th:replace="mainMenu :: strzelniceMenu"/>
+
+<form th:action="@{/strzelnice/newstrzelnica}" method="post" th:object="${strzelnica}">
+
+<div class="card mb-3">
+    <img src="http://paintball-malopolska.pl/edc_media/Lite/Item-0093/MainImage/autoxautomAUTOcFFFFFF.jpg" class="card-img-top" alt="NOWA STRZELNICA">
+    <div class="card-img-overlay">
+        <h3 class="card-title text-light">ZAREJESTRUJ NOWĄ STRZELNICĘ</h3>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="nazwaStrzelnicy" th:field="*{name}" placeholder="nazwa">
+            <label for="nazwaStrzelnicy">Nazwa strzelnicy</label>
+        </div><br>
+        <div class="form-floating">
+            <textarea class="form-control" id="opisStrzelnicy" th:field="*{description}" placeholder="Opis obiektu" style="height: 100px"></textarea>
+            <label for="opisStrzelnicy">Opis obiektu</label>
+        </div><br>
+
+        <div class="row g-2">
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="urlStrzelnicy" th:field="*{url}" placeholder="link do strony">
+                    <label for="urlStrzelnicy">Link do strony</label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="email" th:field="*{email}" placeholder="e-mail">
+                    <label for="email">e-mail kontaktowy</label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="telefon" th:field="*{telefon}" placeholder="telefon">
+                    <label for="telefon">telfon kontaktowy</label>
+                </div>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">STANOWISKA</h4>
+                        <div class="mb-3 row">
+                            <label for="iloscStanowisk" class="col-sm-4 col-form-label">Ilość stanowisk</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="iloscStanowisk" th:field="*{iloscStanowisk}">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="minDlugosc" class="col-sm-4 col-form-label">Minimalna długość osi [m]</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="minDlugosc" th:field="*{dlugoscOsiMin}">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="maxDlugosc" class="col-sm-4 col-form-label">Maksymalna długość osi [m]</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="maxDlugosc" th:field="*{dlugoscOsiMax}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">DOSTĘPNOŚĆ</h4>
+                                <div class="form-check form-check-inline">
+                                    <input type="checkbox" th:field="*{dostępneDni}" value="PONIEDZIAŁEK" class="btn-check" id="date1" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="date1">PONIEDZIAŁEK</label>
+                                    <input type="checkbox" th:field="*{dostępneDni}" value="WTOREK" class="btn-check" id="date2" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="date2">WTOREK</label>
+                                    <input type="checkbox" th:field="*{dostępneDni}" value="ŚRODA" class="btn-check" id="date3" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="date3">ŚRODA</label>
+                                    <input type="checkbox" th:field="*{dostępneDni}" value="CZWARTEK" class="btn-check" id="date4" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="date4">CZWARTEK</label>
+                                    <input type="checkbox" th:field="*{dostępneDni}" value="PIĄTEK" class="btn-check" id="date5" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="date5">PIĄTEK</label>
+                                    <input type="checkbox" th:field="*{dostępneDni}" value="SOBOTA" class="btn-check" id="date6" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="date6">SOBOTA</label>
+                                    <input type="checkbox" th:field="*{dostępneDni}" value="NIEDZIELA" class="btn-check" id="date7" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="date7">NIEDZIELA</label>
+
+                                <div class="input-group">
+                                    <span class="input-group-text" id="timeOd" th:field="*{godzinyStart}">Otwarcie</span>
+                                    <input type="time" class="form-control" aria-label="timeOd" aria-describedby="timeOd">
+                                    <span class="input-group-text" id="timeDo" th:field="*{godzinyStop}">Zamknięcie</span>
+                                    <input type="time" class="form-control" aria-label="timeDo" aria-describedby="timeDo">
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    <input type="submit"/>
+</form>
+</body>
+</html>
