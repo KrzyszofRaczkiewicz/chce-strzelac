@@ -22,7 +22,7 @@
     <div class="card-img-overlay">
         <h3 class="card-title text-light">ZAREJESTRUJ NOWĄ STRZELNICĘ</h3>
         <div class="form-floating">
-            <input type="text" class="form-control" id="nazwaStrzelnicy" th:field="*{name}" placeholder="nazwa">
+            <input type="text" class="form-control" id="nazwaStrzelnicy" th:field="*{name}" placeholder="nazwa" required>
             <label for="nazwaStrzelnicy">Nazwa strzelnicy</label>
         </div><br>
         <div class="form-floating">
@@ -39,13 +39,13 @@
             </div>
             <div class="col-md">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="email" th:field="*{email}" placeholder="e-mail">
+                    <input type="text" class="form-control" id="email" th:field="*{email}" placeholder="e-mail" required>
                     <label for="email">e-mail kontaktowy</label>
                 </div>
             </div>
             <div class="col-md">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="telefon" th:field="*{telefon}" placeholder="telefon">
+                    <input type="text" class="form-control" id="telefon" th:field="*{telefon}" placeholder="telefon" required>
                     <label for="telefon">telfon kontaktowy</label>
                 </div>
             </div>
@@ -81,8 +81,10 @@
                     <div class="card-body">
                         <h4 class="card-title">DOSTĘPNOŚĆ</h4>
                                 <div class="form-check form-check-inline">
-                                    <input type="checkbox" th:field="*{dostępneDni}" value="PONIEDZIAŁEK" class="btn-check" id="date1" autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="date1">PONIEDZIAŁEK</label>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" th:field="*{dostępneDni}" class="custom-control-input" value="PONIEDZIAŁEK" id="date1">
+                                        <label class="custom-control-label" for="date1">PONIEDZIAŁEK</label>
+                                    </div>
                                     <input type="checkbox" th:field="*{dostępneDni}" value="WTOREK" class="btn-check" id="date2" autocomplete="off">
                                     <label class="btn btn-outline-primary" for="date2">WTOREK</label>
                                     <input type="checkbox" th:field="*{dostępneDni}" value="ŚRODA" class="btn-check" id="date3" autocomplete="off">
@@ -96,20 +98,21 @@
                                     <input type="checkbox" th:field="*{dostępneDni}" value="NIEDZIELA" class="btn-check" id="date7" autocomplete="off">
                                     <label class="btn btn-outline-primary" for="date7">NIEDZIELA</label>
 
-                                <div class="input-group">
-                                    <span class="input-group-text" id="timeOd" th:field="*{godzinyStart}">Otwarcie</span>
-                                    <input type="time" class="form-control" aria-label="timeOd" aria-describedby="timeOd">
-                                    <span class="input-group-text" id="timeDo" th:field="*{godzinyStop}">Zamknięcie</span>
-                                    <input type="time" class="form-control" aria-label="timeDo" aria-describedby="timeDo">
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="timeOd">Otwarcie</span>
+                                        <input type="time" class="form-control" th:field="*{godzinyStart}" aria-label="timeOd" aria-describedby="timeOd">
+                                        <span class="input-group-text" id="timeDo">Zamknięcie</span>
+                                        <input type="time" class="form-control" th:field="*{godzinyStop}" aria-label="timeDo" aria-describedby="timeDo">
+                                    </div>
                                 </div>
                     </div>
+                    <button class="btn btn-outline-success btn-block btn-lg" type="submit"><b>ZAREJESTRUJ STRZELNICĘ</b></button><br>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </div>
-    <input type="submit"/>
 </form>
 </body>
 </html>

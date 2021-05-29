@@ -22,6 +22,12 @@ public class StrzelniceController {
         return "strzelnice";
     }
 
+    @GetMapping("/strzelniceList")
+    public String allStrzelnicas(Model model) {
+        model.addAttribute("allStrzelnicas", strzelnicaService.getAllStrzelnicas());
+        return "strzelnice_list";
+    }
+
     @GetMapping("/newstrzelnica")
     public String getStrzelnicaForm(Model model) {
         model.addAttribute("strzelnica", new Strzelnica());
@@ -31,6 +37,6 @@ public class StrzelniceController {
     @PostMapping("/newstrzelnica")
     public String addNewStrzelnica(Strzelnica strzelnica) {
         strzelnicaService.insertNewStrzelnica(strzelnica);
-        return "strzelnica_form";
+        return "redirect:/strzelnice/strzelniceList";
     }
 }

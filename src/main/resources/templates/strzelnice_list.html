@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista strzelnic</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+<div th:replace="mainMenu :: menu"/>
+<div th:replace="mainMenu :: strzelniceMenu"/>
+<div class="container-fluid">
+<table class="table">
+    <tr>
+        <th>Nazwa</th>
+        <th>Opis</th>
+        <th>URL</th>
+        <th>@</th>
+        <th>Telefon</th>
+        <th>Ilosc stanowisk</th>
+        <th>Dlugość MAX</th>
+        <th>Długość MIN</th>
+        <th>Otwarte</th>
+        <th>Dni</th>
+        <th></th>
+    </tr>
+    <tr th:each="strzelnica : ${allStrzelnicas}" >
+        <td><span th:text="${strzelnica.name}"/></td>
+        <td><span th:text="${strzelnica.description}"/></td>
+        <td><span th:text="${strzelnica.url}"/></td>
+        <td><span th:text="${strzelnica.email}"/></td>
+        <td><span th:text="${strzelnica.telefon}"/></td>
+        <td><span th:text="${strzelnica.iloscStanowisk}"/></td>
+        <td><span th:text="${strzelnica.dlugoscOsiMin}"/></td>
+        <td><span th:text="${strzelnica.dlugoscOsiMax}"/></td>
+        <td><span th:text="${strzelnica.godzinyStart}"/> - <span th:text="${strzelnica.godzinyStop}"/></td>
+        <td></td>
+        <td><a class="btn btn-outline-primary" th:href="@{/strzelnica/{id} (id=${strzelnica.id})}">Edytuj Dane</a></td>
+
+    </tr>
+</table>
+</div>
+</body>
+</html>
