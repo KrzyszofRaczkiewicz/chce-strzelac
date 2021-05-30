@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -32,6 +33,28 @@ public class StrzelniceController {
     public String getStrzelnicaForm(Model model) {
         model.addAttribute("strzelnica", new Strzelnica());
         return "strzelnica_form";
+    }
+
+    @GetMapping("/{strzelnicaID}")
+    public String getStrzelniceInfo(Model model, @PathVariable String strzelnicaID) {
+        int id = Integer.parseInt(strzelnicaID);
+        for (Strzelnica strzelnica : strzelnicaService.getAllStrzelnicas()) {
+            if(strzelnica.getId() == id) {
+                model.addAttribute("strzelnica", strzelnica);
+            }
+        }
+        return "strzelnica_info";
+    }
+
+    @GetMapping("/edit/{strzelnicaID}")
+    public String editStrzelniceInfo(Model model, @PathVariable String strzelnicaID) {
+        int id = Integer.parseInt(strzelnicaID);
+        for (Strzelnica strzelnica : strzelnicaService.getAllStrzelnicas()) {
+            if(strzelnica.getId() == id) {
+                model.addAttribute("strzelnica", strzelnica);
+            }
+        }
+        return "strzelnica_edit";
     }
 
     @PostMapping("/newstrzelnica")

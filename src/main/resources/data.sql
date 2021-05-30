@@ -12,5 +12,6 @@ create table strzelnice (
       dlugoscOsiMax INT NULL,
       godzinyOtwarcia VARCHAR(15) NOT NULL,
       dostępneDni VARCHAR(100) NOT NULL,
+      status INT NOT NULL,
       PRIMARY KEY (id)
       )

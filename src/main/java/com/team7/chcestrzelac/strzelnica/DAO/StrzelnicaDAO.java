@@ -22,7 +22,7 @@ public class StrzelnicaDAO {
         if(strzelnica.getName().isBlank() || strzelnica.getEmail().isBlank() || strzelnica.getTelefon().isBlank()){
             System.out.println("BRAK PODANIA PODSTAWOWYCH DANYCH - STRZELNICA NIE ZOSTAŁA ZREJESTROWANA");
         } else {
-            jdbcTemplate.update("INSERT INTO strzelnice VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            jdbcTemplate.update("INSERT INTO strzelnice VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
                     ,null
                     ,strzelnica.getName()
                     ,strzelnica.getDescription()
@@ -33,7 +33,8 @@ public class StrzelnicaDAO {
                     ,strzelnica.getDlugoscOsiMin()
                     ,strzelnica.getDlugoscOsiMax()
                     ,godziny
-                    ,dostępneDni);
+                    ,dostępneDni
+                    ,strzelnica.getStatus());
         }
     }
 
@@ -61,7 +62,7 @@ public class StrzelnicaDAO {
             String dostepneDniString = rs.getString("dostępneDni");
             String[] dostępneDni = dostepneDniString.split(" ");
             strzelnica.setDostępneDni(dostępneDni);
-
+            strzelnica.setStatus(rs.getInt("status"));
             return strzelnica;
         });
         return strzelnice;

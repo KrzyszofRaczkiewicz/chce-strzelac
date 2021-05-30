@@ -22,6 +22,13 @@ public class StrzelnicaService {
 
     }
     public void insertNewStrzelnica(Strzelnica strzelnica) {
+        if(strzelnica.getGodzinyStart().isBlank()){
+            strzelnica.setGodzinyStart("00:00");
+        }
+        if(strzelnica.getGodzinyStop().isBlank()){
+            strzelnica.setGodzinyStop("00:00");
+        }
+        strzelnica.setStatus(1);
         StrzelnicaDAO.insertStrzenica(strzelnica);
     }
 }
