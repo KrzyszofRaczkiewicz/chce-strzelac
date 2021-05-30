@@ -15,30 +15,34 @@
 <table class="table">
     <tr>
         <th>Nazwa</th>
-        <th>Opis</th>
         <th>URL</th>
-        <th>@</th>
+        <th>Mail</th>
         <th>Telefon</th>
         <th>Ilosc stanowisk</th>
-        <th>Dlugość MAX</th>
-        <th>Długość MIN</th>
+        <th>Dlugość osi</th>
         <th>Otwarte</th>
         <th>Dni</th>
+        <th>Status</th>
+        <th></th>
         <th></th>
     </tr>
     <tr th:each="strzelnica : ${allStrzelnicas}" >
         <td><span th:text="${strzelnica.name}"/></td>
-        <td><span th:text="${strzelnica.description}"/></td>
         <td><span th:text="${strzelnica.url}"/></td>
         <td><span th:text="${strzelnica.email}"/></td>
         <td><span th:text="${strzelnica.telefon}"/></td>
         <td><span th:text="${strzelnica.iloscStanowisk}"/></td>
-        <td><span th:text="${strzelnica.dlugoscOsiMin}"/></td>
-        <td><span th:text="${strzelnica.dlugoscOsiMax}"/></td>
+        <td>od <span th:text="${strzelnica.dlugoscOsiMin}"/> do <span th:text="${strzelnica.dlugoscOsiMax}"/></td>
         <td><span th:text="${strzelnica.godzinyStart}"/> - <span th:text="${strzelnica.godzinyStop}"/></td>
         <td></td>
-        <td><a class="btn btn-outline-primary" th:href="@{/strzelnica/{id} (id=${strzelnica.id})}">Edytuj Dane</a></td>
-
+        <td>
+            <div th:switch="${strzelnica.status}">
+                <p th:case="'0'" class="text-danger"><b>STRZELNICA NIEAKTYWNA</b></p>
+                <p th:case="'1'" class="text-success"><b>STRZELNICA AKTYWNA</b></p>
+            </div>
+        </td>
+        <td><a class="btn btn-outline-info btn-sm" th:href="@{/strzelnice/{id} (id=${strzelnica.id})}">More info</a></td>
+        <td><a class="btn btn-outline-primary btn-sm" th:href="@{/strzelnice/edit/{id} (id=${strzelnica.id})}">Edytuj dane</a></td>
     </tr>
 </table>
 </div>

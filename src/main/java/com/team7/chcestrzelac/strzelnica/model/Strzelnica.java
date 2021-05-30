@@ -18,12 +18,22 @@ public class Strzelnica {
     private String godzinyStop;
     private String[] dostępneDni;
 
+    private int status;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     public Strzelnica() {
         this.id = ID_GENERATOR;
         ID_GENERATOR++;
     }
 
-    public Strzelnica(String name, String description, String url, String email, String telefon, int iloscStanowisk, int dlugoscOsiMin, int dlugoscOsiMax, String godzinyStart, String godzinyStop, String[] dostępneDni) {
+    public Strzelnica(String name, String description, String url, String email, String telefon, int iloscStanowisk, int dlugoscOsiMin, int dlugoscOsiMax, String godzinyStart, String godzinyStop, String[] dostępneDni, int status) {
         this.id = ID_GENERATOR;
         ID_GENERATOR++;
         this.name = name;
@@ -37,6 +47,7 @@ public class Strzelnica {
         this.godzinyStart = godzinyStart;
         this.godzinyStop = godzinyStop;
         this.dostępneDni = dostępneDni;
+        this.status = status;
     }
 
     public void setId(int id) {
@@ -133,5 +144,6 @@ public class Strzelnica {
 
     public void setDostępneDni(String[] dostępneDni) {
         this.dostępneDni = dostępneDni;
+
     }
 }
